@@ -3,12 +3,17 @@ import requests
 from urllib.parse import urljoin
 import json
 
-# should get all the links from the subject content page
-# eg. https://www.aqa.org.uk/subjects/physics/a-level/physics-7408/specification/subject-content
-
 output = {}
 
-URL = "https://www.aqa.org.uk/subjects/physics/a-level/physics-7408/specification/subject-content"
+# when i tried this for cs, it partially works
+# but the table has multiple rows, so only the first row is captured
+# i need to change it so that it works for as many rows as possible
+# instead of subtopic/subtopic: {"content": "", "opp": ""}
+# do subtopic: [{"content": "", "opp": ""}, {"content": "", "opp": ""}, {"content": "", "opp": ""}]
+
+# URL = "https://www.aqa.org.uk/subjects/physics/a-level/physics-7408/specification/subject-content"
+
+URL = "https://www.aqa.org.uk/subjects/computer-science/a-level/computer-science-7517/specification/subject-content"
 
 page = requests.get(URL)
 soup = BeautifulSoup(page.content, "html.parser")
@@ -75,5 +80,5 @@ for topic in topics:
 
 print(json.dumps(output, indent=4))
 
-with open("aqa_physics.json", "w", encoding="utf-8") as f:
+with open("aqa_cs.json", "w", encoding="utf-8") as f:
     json.dump(output, f, indent=4, ensure_ascii=False)
