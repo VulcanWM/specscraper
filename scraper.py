@@ -50,7 +50,6 @@ for topic in topics:
     elif len(h4s) == len(results):
         subsubtopics = {}
         for h3 in h3s:
-            subtopics.append(h3.get_text())
             output[topic][h3.get_text()] = {}
         for h4 in h4s:
             subsubtopic = h4.get_text()
@@ -75,3 +74,6 @@ for topic in topics:
             subsubtopicIndex += 1
 
 print(json.dumps(output, indent=4))
+
+with open("aqa_physics.json", "w", encoding="utf-8") as f:
+    json.dump(output, f, indent=4, ensure_ascii=False)
