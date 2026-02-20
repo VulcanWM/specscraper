@@ -5,7 +5,7 @@
 SpecScraper is a simple CLI Python tool, which scrapes the entire AQA Physics A Level specification from its website, and turns it into JSON format. 
 I will use this JSON file in my project specmap, which will turn the JSON file into a todolist.
 
-# Next `steps?
+# Next steps?
 
 This is the first release of specscraper.
 
