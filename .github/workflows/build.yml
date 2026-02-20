@@ -33,10 +33,10 @@ jobs:
     - name: Test executable
       run: |
         if ($env:MATRIX_OS -eq "windows-latest") {
-            .\dist\your_script.exe
+            .\dist\scraper.exe
         } else {
-            chmod +x dist/your_script
-            ./dist/your_script
+            chmod +x dist/scraper
+            ./dist/scraper
         }
       shell: powershell
 
