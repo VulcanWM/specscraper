@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 from urllib.parse import urljoin
 import json
+from html_to_markdown import convert
 
 output = {}
 
@@ -39,9 +40,9 @@ for topic in topics:
             count = 0
             for td in tds:
                 if count == 0:
-                    output[topic][subtopics[subtopicIndex]]['content'] = td.get_text().replace(".", ". ")
+                    output[topic][subtopics[subtopicIndex]]['content'] = td.decode_contents()
                 elif count == 1:
-                    output[topic][subtopics[subtopicIndex]]['opportunity'] = td.get_text().replace(".", ". ")
+                    output[topic][subtopics[subtopicIndex]]['opportunity'] = td.decode_contents()
                 count += 1
             subtopicIndex += 1
     elif len(h4s) == len(results):
@@ -64,9 +65,9 @@ for topic in topics:
             subtopic = list(subsubtopics.values())[subsubtopicIndex]
             for td in tds:
                 if count == 0:
-                    output[topic][subtopic][subsubtopic]['content'] = td.get_text().replace(".", ". ")
+                    output[topic][subtopic][subsubtopic]['content'] = td.decode_contents()
                 elif count == 1:
-                    output[topic][subtopic][subsubtopic]['opportunity'] = td.get_text().replace(".", ". ")
+                    output[topic][subtopic][subsubtopic]['opportunity'] = td.decode_contents()
                 count += 1
             subsubtopicIndex += 1
 
