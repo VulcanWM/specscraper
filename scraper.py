@@ -2,9 +2,10 @@ from bs4 import BeautifulSoup
 import requests
 from urllib.parse import urljoin
 import json
-from html_to_markdown import convert
 
 output = {}
+
+print("getting output")
 
 URL = "https://www.aqa.org.uk/subjects/physics/a-level/physics-7408/specification/subject-content"
 
